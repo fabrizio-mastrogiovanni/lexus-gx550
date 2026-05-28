@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ease-weblove: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snap: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html,
+body {
+  background: #ffffff;
+  color: #0a0a0a;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  /* IMPORTANT: use `clip` not `hidden` — `overflow: hidden` on an ancestor
+     creates a scroll container and breaks `position: sticky` for all
+     descendants. `clip` prevents overflow without that side effect. */
+  overflow-x: clip;
+}
+
+::selection {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Brutal display utilities */
+.display {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+}
+.display-tight {
+  letter-spacing: -0.06em;
+  line-height: 0.88;
+}
+
+/* Soft grain dot pattern (subtle on white) */
+.grain {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* Hairline rule */
+.hairline {
+  border-color: #e5e5e5;
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
